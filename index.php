@@ -44,7 +44,7 @@
 </div>
 
 
-<div class="container" style="">
+<div class="container">
     <div class="row ">
         <div class="col-12 sinan-blog-title">Latest Posts</div>
         <div class="col-12 sinan-posts">
@@ -72,12 +72,6 @@
                     date="<?php $d = get_the_date( 'l F j, Y' ); echo $d;?>"><?php the_title(); ?></a>
             </div>
             <?php } } ?>
-
-
-            
-
-
-
 
         </div>
     </div>
