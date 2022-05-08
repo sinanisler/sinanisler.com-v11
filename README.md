@@ -10,3 +10,5 @@ WordPress Theme For my Website
 - Portfolio Section
 - Header Section
 - CSS3 Animations
+- Blog Design
+- Custom Blocks (ACF)
