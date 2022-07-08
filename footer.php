@@ -3,7 +3,7 @@
 <div class="container">
   <div class="row">
     <div class="col-12 footer">
-        Sinan İŞLER - <a href="https://www.linkedin.com/in/sinanisler" target="_blank">Linkedin</a> - sinan@sinanisler.com 
+        Sinan İŞLER - sinan@sinanisler.com 
 
 
     </div>
