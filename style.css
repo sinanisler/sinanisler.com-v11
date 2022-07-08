@@ -351,8 +351,8 @@ body {
 /*	some comment styles this works with wpdiscuz plugin	*/
 
 #wpdcom{
-	max-width: 100%;
-	margin: 0;
+	max-width: 100% !important;
+	margin: 0 !important;
 }
 
 
