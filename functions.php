@@ -2,26 +2,45 @@
 
 
 
+register_nav_menus( array(
+      'header_menu' => __( 'Header Menu', 'header_menu' ),
+) );
+ 
 
-
-
-
-
-
-
-add_theme_support( 'title-tag' );
-add_theme_support( 'post-thumbnails' );
-remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
-remove_action( 'wp_print_styles', 'print_emoji_styles' );
+// Removing some things 
+// remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+// remove_action( 'wp_print_styles', 'print_emoji_styles' );
 remove_action( 'wp_head', 'rest_output_link_wp_head', 10 );
 remove_action ('wp_head', 'rsd_link');
 remove_action ('wp_head', 'wlwmanifest_link');
 remove_action ('wp_head', 'wp_generator');
 remove_action( 'wp_head', 'wp_resource_hints', 2 );
-function wps_deregister_styles() {
-    wp_dequeue_style( 'global-styles' );
+
+// Adding some support things
+add_theme_support( 'title-tag' );
+add_theme_support( 'post-thumbnails' );
+add_theme_support( 'responsive-embeds' );
+add_theme_support( 'editor-styles' );
+add_theme_support( 'html5', array('style','script', ) );
+add_theme_support( 'automatic-feed-links' );
+add_theme_support( 'wp-block-styles' );
+
+
+
+
+
+function ss_excerpt_more( $more ) {
+   if ( ! is_single() ) {
+       $more = sprintf( '...');
+   }
+   return $more;
 }
-add_action( 'wp_enqueue_scripts', 'wps_deregister_styles', 100 );
+add_filter( 'excerpt_more', 'ss_excerpt_more' );
+
+function ss_custom_excerpt_length( $length ) {
+   return 40;
+}
+add_filter( 'excerpt_length', 'ss_custom_excerpt_length', 999 );
 
 
 
@@ -31,72 +50,47 @@ add_action( 'wp_enqueue_scripts', 'wps_deregister_styles', 100 );
 
 
 
-
-
-
-
-
-/*
-function theme_customize_register( $wp_customize ) {
-    
-    //add section
-     $wp_customize->add_section( 'header_logo' , array(
-    'title'      => __( 'Header Logo MFFFS', 'mytheme' ),
-    'priority'   => 30,
-    ) );
-
-    //settings
-    $wp_customize->add_setting( 'header_logo_image',
-    array(
-       'default' => '',
-       'transport' => 'refresh',
-       'sanitize_callback' => 'esc_url_raw'
-    )
+// Custom Post Type codex_post_type Register
+function codex_post_type() {
+    $args = array(
+        'public'    => true,
+        'label'     => 'Codex',
+        'menu_icon' => 'dashicons-book',
+        'has_archive' => true
     );
-
-
-  //control
- $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'header_logo_image',
-    array(
-       'label' => __( 'Select logo image' ),
-       'description' => esc_html__( 'Add logo to header' ),
-       'section' => 'header_logo',
-       'button_labels' => array( // Optional.
-          'select' => __( 'Select Image' ),
-          'change' => __( 'Change Image' ),
-          'remove' => __( 'Remove' ),
-          'default' => __( 'Default' ),
-          'placeholder' => __( 'No image selected' ),
-          'frame_title' => __( 'Select Image' ),
-          'frame_button' => __( 'Choose Image' ),
-       )
-    )
-    ) );
-
-
-
-    $wp_customize->add_section( 'example', array(
- 
-       'title'=> __( 'Add Your Name', 'TextDomain' ),
-       'priority' => 201
-    ) );
- 
-    $wp_customize->add_setting( 'setting' );
-    $wp_customize->add_control( 'setting', array(
-        'id'=> 'id',
-        'label' => __( 'First Name:', 'TextDomain' ),
-        'section' => 'example'
-    ) );
-
-
-
-
+    register_post_type( 'codex', $args );
 }
+add_action( 'init', 'codex_post_type' );
 
-add_action( 'customize_register', 'theme_customize_register' );
+
+// Custom Taxonomy codex-topic Register
+function register_codex_topic_taxonomy() {
+    $args = array(
+        'label'        => 'Codex Topic',
+        'public'       => true,
+        'rewrite'      => true,
+        'hierarchical' => true
+    );
+     
+    register_taxonomy( 'codex-topic', 'codex', $args );
+}
+add_action( 'init', 'register_codex_topic_taxonomy', 0 );
 
 
-*/
+
+
+// Custom Post Type gpl_download Register
+function gpl_download() {
+    $args = array(
+        'public'    => true,
+        'label'     => 'GPL Download',
+        'menu_icon' => 'dashicons-arrow-down-alt',
+        'has_archive' => true
+    );
+    register_post_type( 'gpl-download', $args );
+}
+add_action( 'init', 'gpl_download' );
+
 
 
 

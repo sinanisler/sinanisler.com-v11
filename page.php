@@ -10,19 +10,11 @@
 
             <div class="sinan-post">
                 
-                <div class="row index-sinan-post-single p-0 m-0">
-                    <?php the_post_thumbnail( 'large' ); ?>
-
-                    <div class="col-1"></div>
-                    <div class="col-10 index-sinan-post-box">
-                        <a href="<?php the_permalink(); ?>" class="sinan-post-title" hreflang="en-us" 
-                        date="<?php $d = get_the_date( 'l F j, Y' ); echo $d;?>"><?php the_title(); ?></a>
-                    </div>
-                    <div class="col-1"></div>
-
-
+                <div>
+                	<?php the_post_thumbnail( 'full' ); ?>
                 </div>
 
+                <h1 class="sinan-post-title"><?php the_title(); ?></h1>
                 <time class="sinan-post-date"><?php $d = get_the_date( 'l F j, Y' ); echo $d;?></time>
 
 
@@ -36,9 +28,6 @@
 
             </div>
 
-            <div class="sinan-post-content-comments">
-				<?php comments_template(); ?>
-            </div>
 
 
 
