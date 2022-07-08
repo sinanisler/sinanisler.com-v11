@@ -355,6 +355,9 @@ body {
 	margin: 0 !important;
 }
 
+.wpd-form-head{
+	display: none !important;
+}
 
 
 
