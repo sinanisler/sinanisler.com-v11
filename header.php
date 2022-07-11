@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
 
     
-    <link rel="stylesheet" href="<?php bloginfo('stylesheet_directory'); ?>/style.css?1.0<?php //echo rand(); ?>">
+    <link rel="stylesheet" href="<?php bloginfo('stylesheet_directory'); ?>/style.css?1.1<?php //echo rand(); ?>">
     <?php wp_head(); ?>
 </head>
 <body>
