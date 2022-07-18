@@ -93,6 +93,20 @@ add_action( 'init', 'gpl_download' );
 
 
 
+// Custom Taxonomy gpl-topic Register
+function register_gpl_topic_taxonomy() {
+    $args = array(
+        'label'        => 'GPL Topic',
+        'public'       => true,
+        'rewrite'      => true,
+        'hierarchical' => true
+    );
+     
+    register_taxonomy( 'gpl-topic', 'gpl-download', $args );
+}
+add_action( 'init', 'register_gpl_topic_taxonomy', 0 );
+
+
 
 
 ?>
