@@ -57,7 +57,7 @@ function codex_post_type() {
         'label'     => 'Codex',
         'menu_icon' => 'dashicons-book',
         'has_archive' => true,
-        'supports' =>   array( 'title', 'editor', 'author', 'comments' , 'revisions' )
+        'supports' =>   array( 'title', 'editor', 'author', 'comments' , 'revisions' , 'custom-fields' )
     );
     register_post_type( 'codex', $args );
 }
